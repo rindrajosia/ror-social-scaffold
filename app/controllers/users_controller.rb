@@ -17,6 +17,9 @@ end
 def show
   @user = User.find(params[:id])
   @posts = @user.posts.ordered_by_most_recent
+  if !friend?(@user)
+    @friend = true
+  end
 end
 
 def friend_requests
@@ -74,4 +77,5 @@ end
 def friend?(user)
   friends.include?(user)
 end
+
 end

@@ -18,9 +18,9 @@
           <span class="profile-link">
             <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
           </span>
-            <span class="profile-link">
-              | <%= link_to 'Add Friend', friendships_path(friend_id: user.id), method: :post, class: 'profile-link'%>
-            </span>
+          <button type="button" class="btn btn-primary">
+              <%= link_to 'Add Friend', friendships_path(friend_id: user.id), method: :post, class: 'profile-link'%>
+          </button>
         </li>
       <% end %>
     <% end %>

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @friends_inverse_confirmed = friends_inverse_confirmed
     @requests = friend_requests
     @invitations = friend_requests_by_me
-end
+  end
 
   def show
     @user = User.find(params[:id])

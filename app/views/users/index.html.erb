@@ -9,6 +9,7 @@
 </section>
 
 <section class="users-section">
+  <h3>Liste of User</h3>
   <ul class="users-list">
     <% @users.each do |user| %>
       <% if user.id != current_user.id %>
@@ -29,21 +30,29 @@
 <section class="users-section">
   <h2>Your Friends</h2>
   <ul class="users-list">
-    <% current_user.friendships.each do |friendship| %>
-    <li>
-      Name: <%= friendship.friend.name %>
-      <span class="profile-link">
-        (<%= link_to "remove", friendship, :method => :delete, class: 'profile-link' %>)
-      </span>
-    </li>
+    <% @friends_confirmed.each do |friendship| %>
+        <li>
+          Name: <%= friendship.user.name %>
+          <span class="profile-link">
+            <%= link_to 'See Profile',  user_path(friendship.user), class: 'profile-link' %>
+          </span>
+        </li>
+    <% end %>
+    <% @friends_inverse_confirmed.each do |friendship| %>
+        <li>
+          Name: <%= friendship.friend.name %>
+          <span class="profile-link">
+            <%= link_to 'See Profile',  user_path(friendship.friend), class: 'profile-link' %>
+          </span>
+        </li>
     <% end %>
   </ul>
 </section>
 
 <section class="users-section">
-  <h2>Users Who Have Befriended You</h2>
+  <h2>Friend_requests sent by me (Waiting for confirmation)</h2>
   <ul class="users-list">
-    <% current_user.inverse_friends.each do |user| %>
+    <% @invitations.each do |user| %>
     <li>
       Name: <%= user.name %>
     </li>
@@ -52,7 +61,7 @@
 </section>
 
 <section class="users-section">
-  <h2>Friend_requests</h2>
+  <h2>Friend_requests sent to me (Waiting for confirmation)</h2>
   <ul class="users-list">
     <% @requests.each do |request| %>
     <li>

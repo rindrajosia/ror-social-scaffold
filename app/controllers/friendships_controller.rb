@@ -10,4 +10,15 @@ class FriendshipsController < ApplicationController
         redirect_to users_path
       end
   end
+
+  def update
+    @friendship = current_user.inverse_friendships.find(params[:id])
+    if @friendship.update(status: true)
+      flash.notice = "Confirmed."
+      redirect_to users_path
+    else
+      flash.notice = "Unable to Confirme."
+      redirect_to users_path
+    end
+  end
 end

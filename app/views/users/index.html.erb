@@ -25,3 +25,43 @@
     <% end %>
   </ul>
 </section>
+
+<section class="users-section">
+  <h2>Your Friends</h2>
+  <ul class="users-list">
+    <% current_user.friendships.each do |friendship| %>
+    <li>
+      Name: <%= friendship.friend.name %>
+      <span class="profile-link">
+        (<%= link_to "remove", friendship, :method => :delete, class: 'profile-link' %>)
+      </span>
+    </li>
+    <% end %>
+  </ul>
+</section>
+
+<section class="users-section">
+  <h2>Users Who Have Befriended You</h2>
+  <ul class="users-list">
+    <% current_user.inverse_friends.each do |user| %>
+    <li>
+      Name: <%= user.name %>
+    </li>
+    <% end %>
+  </ul>
+</section>
+
+<section class="users-section">
+  <h2>Friend_requests</h2>
+  <ul class="users-list">
+    <% @requests.each do |request| %>
+    <li>
+      Name: <%= request.user.name %>
+      <span class="profile-link">
+        <%= link_to 'Confirme', request, method: :put, class: 'profile-link'%>
+        (<%= link_to "rejected", request, :method => :delete, class: 'profile-link' %>)
+      </span>
+    </li>
+    <% end %>
+  </ul>
+</section>

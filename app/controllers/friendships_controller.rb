@@ -21,4 +21,12 @@ class FriendshipsController < ApplicationController
       redirect_to users_path
     end
   end
+
+  def destroy
+  #@friendship = current_user.friendships.find(params[:id])
+  @friendship = current_user.inverse_friendships.find(params[:id])
+  @friendship.destroy
+  flash[:notice] = "Rejected Invitation."
+  redirect_to users_path
+end
 end

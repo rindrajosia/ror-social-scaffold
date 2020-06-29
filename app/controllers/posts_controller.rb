@@ -22,8 +22,8 @@ class PostsController < ApplicationController
 
   def timeline_posts
     @timeline_posts = []
-    friends.each do |friend|
-      posts.each do |post|
+    posts.each do |post|
+      friends.each do |friend|
         if post.user_id.equal?friend.id
           @timeline_posts << post
         end
@@ -56,6 +56,6 @@ class PostsController < ApplicationController
     current_user.inverse_friendships.each do |friendship|
       friend << friendship.user if friendship.status == true
     end
-    friend
+    friend << current_user
   end
 end

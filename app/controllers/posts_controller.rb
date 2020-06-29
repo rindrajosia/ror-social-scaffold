@@ -21,21 +21,32 @@ class PostsController < ApplicationController
   private
 
   def timeline_posts
-    @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user)
+    @timeline_posts = []
+    friends.each do |friend|
+      posts.each do |post|
+        if post.user_id.equal?friend.id
+          @timeline_posts << post
+        end
+      end
+    end
   end
 
   def post_params
     params.require(:post).permit(:content)
   end
 
+  def posts
+    Post.all.ordered_by_most_recent
+  end
+
   def friends
-    friends_inverse_confirmed + friends_confirmed
+    friends_confirmed
   end
 
   def friends_inverse_confirmed
     friendship_array = []
     current_user.friendships.each do |friendship|
-      friendship_array << friendship.user if friendship.status == true
+      friendship_array << friendship.friend if friendship.status == true
     end
     friendship_array
   end
@@ -43,7 +54,7 @@ class PostsController < ApplicationController
   def friends_confirmed
     friend = []
     current_user.inverse_friendships.each do |friendship|
-      friend << friendship.friend if friendship.status == true
+      friend << friendship.user if friendship.status == true
     end
     friend
   end

@@ -50,6 +50,7 @@ group :test do
   gem 'database_cleaner-active_record'
   gem 'rspec'
   gem 'selenium-webdriver'
+    gem 'shoulda-matchers'
 end
 
 group :development do

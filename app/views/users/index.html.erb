@@ -38,14 +38,6 @@
           </span>
         </li>
     <% end %>
-    <% @friends_inverse_confirmed.each do |friendship| %>
-        <li>
-          Name: <%= friendship.friend.name %>
-          <span class="profile-link">
-            <%= link_to 'See Profile',  user_path(friendship.friend), class: 'profile-link' %>
-          </span>
-        </li>
-    <% end %>
   </ul>
 </section>
 

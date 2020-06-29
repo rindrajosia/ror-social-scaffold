@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   def index
     @post = Post.new
     timeline_posts
+    @friends = friends
   end
 
   def create
@@ -25,5 +26,25 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:content)
+  end
+
+  def friends
+    friends_inverse_confirmed + friends_confirmed
+  end
+
+  def friends_inverse_confirmed
+    friendship_array = []
+    current_user.friendships.each do |friendship|
+      friendship_array << friendship.user if friendship.status == true
+    end
+    friendship_array
+  end
+
+  def friends_confirmed
+    friend = []
+    current_user.inverse_friendships.each do |friendship|
+      friend << friendship.friend if friendship.status == true
+    end
+    friend
   end
 end

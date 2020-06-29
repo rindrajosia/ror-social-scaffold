@@ -3,11 +3,8 @@ class FriendshipsController < ApplicationController
 
   def create
     @friendship = current_user.friendships.build(friend_id: params[:friend_id])
-    @ft = Friendship.new
-    @ft.user_id = params[:friend_id]
-    @ft.friend_id = current_user.id
 
-    if @friendship.save && @ft.save
+    if @friendship.save
       flash.notice = 'Added friend.'
     else
       flash.alert = 'Unable to add friend.'
@@ -16,10 +13,14 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    @ft = Friendship.where(user_id: current_user.id, friend_id: params[:id])
-
+    @friend = Friendship.find(params[:id])
+    @ft = Friendship.create
+    @ft.user_id = current_user.id
+    @ft.friend_id = @friend.user_id
+    @ft.status = true
+    @ft.save
     @friendship = current_user.inverse_friendships.find(params[:id])
-    flash[:notice] = if @friendship.update(status: true) && @ft.update(status: true)
+    flash[:notice] = if @friendship.update(status: true)
                        'Confirmed'
                      else
                        'Unable to comfirm'
@@ -28,11 +29,9 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    @ft = Friendship.where(user_id: current_user.id, friend_id: params[:id])
-
     @friendship = current_user.inverse_friendships.find(params[:id])
 
-    flash[:notice] = @friendship.destroy && @ft.destroy ? flash[:notice] = 'Rejected' : 'Unable to reject'
+    flash[:notice] = @friendship.destroy ? flash[:notice] = 'Rejected' : 'Unable to reject'
 
     redirect_to users_path
   end

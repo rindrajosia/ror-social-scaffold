@@ -24,9 +24,7 @@ class PostsController < ApplicationController
     @timeline_posts = []
     posts.each do |post|
       friends.each do |friend|
-        if post.user_id.equal?friend.id
-          @timeline_posts << post
-        end
+        @timeline_posts << post if post.user_id.equal? friend.id
       end
     end
   end

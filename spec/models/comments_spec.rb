@@ -12,11 +12,10 @@ RSpec.describe Post, type: :model do
       expect(comments.content.length).to be <= 200.to_i
     end
   end
-  context "Comments associations" do
+  context 'Comments associations' do
     describe Comment do
-        it { should belong_to(:user) }
-        it { should belong_to(:post) }
-      end
+      it { should belong_to(:user) }
+      it { should belong_to(:post) }
+    end
   end
-  
 end

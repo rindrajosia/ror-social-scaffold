@@ -40,14 +40,15 @@ RSpec.configure do |config|
     DatabaseCleaner.start
   end
 
-  config.after(:each) do
-    DatabaseCleaner.clean
-  end
   Shoulda::Matchers.configure do |config|
     config.integrate do |with|
       # Choose a test framework:
       with.test_framework :rspec
       with.library :rails
     end
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
   end
 end

@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Friendship, type: :model do
-  context 'friend column is for User class' do
-    friend = User.new
-    it 'should be a user' do
-      expect(friend).to be_an_instance_of(User)
+  context 'friendship associations' do
+    describe Friendship do
+      it { should belong_to(:user) }
+      it { should belong_to(:friend).class_name(:User) }
     end
   end
 end

@@ -4,7 +4,7 @@
     <%= raw button(@user, @friend) %>
   </h2>
     <article class="timeline">
-      <h3>Recent posts:</h3>
+      <%= raw post_title(@user, @friend) %>
       <ul class="posts">
         <%= post(@user, @friend) %>
       </ul>

@@ -12,4 +12,10 @@ module UserHelper
   def post(user, friend)
     render @posts if !friend || (user.id.equal? current_user.id)
   end
+
+  def post_title(user, friend)
+    html = ''
+    html = '<h3>Recent posts:</h3>' if !friend || (user.id.equal? current_user.id)
+    html
+  end
 end

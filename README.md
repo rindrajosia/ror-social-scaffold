@@ -9,9 +9,11 @@
 
 ## Live Demo
 
-TBA
+https://herrindra.herokuapp.com
 
+## ERD
 
+![screenshot](docs/social_network.jpeg) 
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.

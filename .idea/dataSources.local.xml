@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails ror-social-scaffold: test" uuid="57f8f820-2dc7-42e6-905d-b2bc01e3abfe">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="GREENPLUM" exact-version="0" />
+      <schema-mapping />
+    </data-source>
+    <data-source name="Rails ror-social-scaffold: development" uuid="3814ec9b-66e9-4112-b3f4-211283a3cc29">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="GREENPLUM" exact-version="0" />
+      <schema-mapping />
+    </data-source>
+    <data-source name="Rails ror-social-scaffold: production" uuid="ab4163c6-5423-4380-a89e-6bbd585a073d">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="GREENPLUM" exact-version="0" />
+      <user-name>ror_social_scaffold</user-name>
+      <schema-mapping />
+    </data-source>
+  </component>
+</project>

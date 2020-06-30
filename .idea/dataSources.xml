@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="Rails ror-social-scaffold: test" uuid="57f8f820-2dc7-42e6-905d-b2bc01e3abfe">
+      <driver-ref>greenplum</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/ror_social_scaffold_test</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails ror-social-scaffold: development" uuid="3814ec9b-66e9-4112-b3f4-211283a3cc29">
+      <driver-ref>greenplum</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/ror_social_scaffold_development</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails ror-social-scaffold: production" uuid="ab4163c6-5423-4380-a89e-6bbd585a073d">
+      <driver-ref>greenplum</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/ror_social_scaffold_production</jdbc-url>
+    </data-source>
+  </component>
+</project>

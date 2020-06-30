@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   def index
     @post = Post.new
     timeline_posts
+    @friends = friends
   end
 
   def create
@@ -20,10 +21,39 @@ class PostsController < ApplicationController
   private
 
   def timeline_posts
-    @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user)
+    @timeline_posts = []
+    posts.each do |post|
+      friends.each do |friend|
+        @timeline_posts << post if post.user_id.equal? friend.id
+      end
+    end
   end
 
   def post_params
     params.require(:post).permit(:content)
+  end
+
+  def posts
+    Post.all.ordered_by_most_recent
+  end
+
+  def friends
+    friends_confirmed
+  end
+
+  def friends_inverse_confirmed
+    friendship_array = []
+    current_user.friendships.each do |friendship|
+      friendship_array << friendship.friend if friendship.status == true
+    end
+    friendship_array
+  end
+
+  def friends_confirmed
+    friend = []
+    current_user.inverse_friendships.each do |friendship|
+      friend << friendship.user if friendship.status == true
+    end
+    friend << current_user
   end
 end
